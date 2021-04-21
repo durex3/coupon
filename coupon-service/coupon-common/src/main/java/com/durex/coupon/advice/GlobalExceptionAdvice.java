@@ -5,8 +5,6 @@ import com.durex.coupon.vo.CommonResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * 全局异常处理
  *
@@ -17,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionAdvice {
 
     @ExceptionHandler(value = CouponException.class)
-    public CommonResponse<String> handlerCouponException(HttpServletRequest request, CouponException e) {
+    public CommonResponse<String> handlerCouponException(CouponException e) {
         CommonResponse<String> response = new CommonResponse<>(-1, "business error");
         response.setData(e.getMessage());
         return response;
