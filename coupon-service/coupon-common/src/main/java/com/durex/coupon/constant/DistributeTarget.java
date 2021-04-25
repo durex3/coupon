@@ -22,12 +22,12 @@ public enum DistributeTarget {
     MULTI(2, "多用户");
 
     /**
-     * 产品线分类编码
+     * 分发目标编码
      */
     private final Integer code;
 
     /**
-     * 产品线描述
+     * 分发目标描述
      */
     private final String description;
 
