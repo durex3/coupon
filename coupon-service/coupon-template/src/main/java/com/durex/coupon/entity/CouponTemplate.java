@@ -7,7 +7,9 @@ import com.durex.coupon.converter.CouponCategoryConverter;
 import com.durex.coupon.converter.DistributeTargetConverter;
 import com.durex.coupon.converter.ProductLineConverter;
 import com.durex.coupon.converter.RuleConverter;
+import com.durex.coupon.serialization.CouponTemplateSerialization;
 import com.durex.coupon.vo.TemplateRule;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +35,7 @@ import java.util.Date;
  * @date 2021/4/25 10:07 下午
  */
 @Table(name = "coupon_template")
+@JsonSerialize(using = CouponTemplateSerialization.class)
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @AllArgsConstructor
@@ -134,7 +137,6 @@ public class CouponTemplate {
     public CouponTemplate(String name, String logo, String desc, String category,
                           Integer productLine, Integer count, Long userId,
                           Integer target, TemplateRule rule) {
-
         this.available = false;
         this.expired = false;
         this.name = name;
