@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
+ * 构建优惠券模版实现类
+ *
  * @author liugelong
  * @date 2021/4/27 10:47 下午
  */

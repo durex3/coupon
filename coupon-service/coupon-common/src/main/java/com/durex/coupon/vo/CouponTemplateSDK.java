@@ -56,6 +56,11 @@ public class CouponTemplateSDK {
     private Long userId;
 
     /**
+     * 优惠券模板的编码
+     */
+    private String key;
+
+    /**
      * 目标用户
      */
     private Integer target;

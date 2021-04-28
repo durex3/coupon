@@ -21,6 +21,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
+ * 异步任务实现类
+ *
  * @author liugelong
  * @date 2021/4/27 9:31 下午
  */
