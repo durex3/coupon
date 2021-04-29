@@ -65,11 +65,6 @@ public class TemplateRequest {
     private Long userId;
 
     /**
-     * 优惠券模板的编码
-     */
-    private String key;
-
-    /**
      * 目标用户
      */
     @NotNull(message = "目标用户不能为空")

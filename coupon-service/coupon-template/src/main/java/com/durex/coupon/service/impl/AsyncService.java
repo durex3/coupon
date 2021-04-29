@@ -33,7 +33,7 @@ public class AsyncService implements IAsyncService {
     @Resource
     private CouponTemplateRepository templateRepository;
     @Resource
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     @Async(value = "getAsyncExecutor")
     @Override
@@ -45,7 +45,7 @@ public class AsyncService implements IAsyncService {
                 Constant.RedisPrefix.COUPON_TEMPLATE,
                 template.getId().toString()
         );
-        log.info("push coupon code to redis: {}", redisTemplate.opsForList().rightPushAll(redisKey, couponCodeSet));
+        log.info("push coupon code to redis: {}", stringRedisTemplate.opsForList().rightPushAll(redisKey, couponCodeSet));
         template.setAvailable(true);
         templateRepository.save(template);
         watch.stop();
@@ -89,7 +89,7 @@ public class AsyncService implements IAsyncService {
      * @return String {@link String}
      */
     private String buildCouponCodeSuffix14(String date) {
-        List<Character> charList = date.chars().mapToObj(char.class::cast)
+        List<Character> charList = date.chars().mapToObj((int c) -> (char) c)
                 .collect(Collectors.toList());
         Collections.shuffle(charList);
         // 中间六位
@@ -97,7 +97,7 @@ public class AsyncService implements IAsyncService {
         char[] bases = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
         // 后八位
         String suffix8 = RandomStringUtils.random(1, bases) +
-                RandomStringUtils.randomAlphanumeric(7);
+                RandomStringUtils.randomNumeric(7);
         return mid6 + suffix8;
     }
 }

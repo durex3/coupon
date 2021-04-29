@@ -26,7 +26,7 @@ public class ScheduleTask {
     @Resource
     private CouponTemplateRepository templateRepository;
     @Resource
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     @Scheduled(fixedRate = 60 * 60 * 1000)
     public void offlineCouponTemplate() {
@@ -58,7 +58,7 @@ public class ScheduleTask {
         });
         if (CollectionUtils.isNotEmpty(expiredTemplateList)) {
             log.info("expire coupon template num: {}", templateRepository.saveAll(expiredTemplateList));
-            redisTemplate.delete(expiredKeyList);
+            stringRedisTemplate.delete(expiredKeyList);
         }
     }
 }
