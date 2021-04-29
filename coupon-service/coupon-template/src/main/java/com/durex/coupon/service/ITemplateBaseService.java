@@ -33,8 +33,8 @@ public interface ITemplateBaseService {
     /**
      * 获取模版 idList 到 CouponTemplateSDK 的映射
      *
-     * @param idCollection {@link Collection<Long>} id集合
+     * @param ids {@link Collection<Long>} id集合
      * @return {@link CouponTemplateSDK}
      */
-    Map<Long, CouponTemplateSDK> getIdList2TemplateSDK(Collection<Long> idCollection);
+    Map<Long, CouponTemplateSDK> getIds2TemplateSDK(Collection<Long> ids);
 }

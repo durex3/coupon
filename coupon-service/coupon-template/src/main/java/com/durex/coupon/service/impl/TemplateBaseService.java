@@ -62,8 +62,8 @@ public class TemplateBaseService implements ITemplateBaseService {
     }
 
     @Override
-    public Map<Long, CouponTemplateSDK> getIdList2TemplateSDK(Collection<Long> idCollection) {
-        List<CouponTemplate> templateList = templateRepository.findAllById(idCollection);
+    public Map<Long, CouponTemplateSDK> getIds2TemplateSDK(Collection<Long> ids) {
+        List<CouponTemplate> templateList = templateRepository.findAllById(ids);
         List<CouponTemplateSDK> templateSDKList = templateList.stream().map(TemplateBaseService::couponTemplateToSDK)
                 .collect(Collectors.toList());
         return templateSDKList.stream()
