@@ -31,7 +31,7 @@ public class ScheduleTask {
     @Scheduled(fixedRate = 60 * 60 * 1000)
     public void offlineCouponTemplate() {
         log.info("start to expire coupon template");
-        // 获取所以未过期的优惠券模版
+        // 获取所有未过期的优惠券模版
         List<CouponTemplate> templateList = templateRepository.findAllByExpired(false);
         if (CollectionUtils.isEmpty(templateList)) {
             log.info("done to expire coupon template");
