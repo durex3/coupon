@@ -4,10 +4,10 @@ import com.durex.coupon.constant.Constant;
 import com.durex.coupon.entity.CouponTemplate;
 import com.durex.coupon.repository.CouponTemplateRepository;
 import com.durex.coupon.service.IAsyncService;
-import com.google.common.base.Stopwatch;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.time.StopWatch;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class AsyncService implements IAsyncService {
     @Async(value = "getAsyncExecutor")
     @Override
     public void asyncConstructCouponByTemplate(CouponTemplate template) {
-        Stopwatch watch = Stopwatch.createStarted();
+        StopWatch watch = StopWatch.createStarted();
         Set<String> couponCodeSet = buildCouponCode(template);
         String redisKey = String.format(
                 "%s%s",
@@ -49,7 +49,7 @@ public class AsyncService implements IAsyncService {
         template.setAvailable(true);
         templateRepository.save(template);
         watch.stop();
-        log.info("construct coupon code by template cost: {}ms", watch.elapsed(TimeUnit.MICROSECONDS));
+        log.info("construct coupon code by template cost: {}ms", watch.getTime(TimeUnit.MICROSECONDS));
         log.info("coupon template({}) available", template.getId());
     }
 
@@ -64,7 +64,7 @@ public class AsyncService implements IAsyncService {
      * @return {@link Set<String>}
      */
     private Set<String> buildCouponCode(CouponTemplate template) {
-        Stopwatch watch = Stopwatch.createStarted();
+        StopWatch watch = StopWatch.createStarted();
         Set<String> result = Sets.newHashSetWithExpectedSize(template.getCount());
         // 前四位
         String prefix4 = template.getProductLine().getCode().toString() +
@@ -78,7 +78,7 @@ public class AsyncService implements IAsyncService {
             result.add(prefix4 + buildCouponCodeSuffix14(date));
         }
         watch.stop();
-        log.info("build coupon code cost: {}ms", watch.elapsed(TimeUnit.MICROSECONDS));
+        log.info("build coupon code cost: {}ms", watch.getTime(TimeUnit.MICROSECONDS));
         return result;
     }
 
