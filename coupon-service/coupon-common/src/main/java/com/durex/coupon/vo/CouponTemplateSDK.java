@@ -18,7 +18,7 @@ public class CouponTemplateSDK {
     /**
      * id
      */
-    private Long id;
+    private Integer id;
 
     /**
      * 优惠券名称
