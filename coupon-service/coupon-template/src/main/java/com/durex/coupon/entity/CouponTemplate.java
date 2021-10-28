@@ -46,7 +46,7 @@ public class CouponTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     /**
      * 是否是可用状态

@@ -12,7 +12,7 @@ import java.util.List;
  * @author liugelong
  * @date 2021/4/25 11:42 下午
  */
-public interface CouponTemplateRepository extends JpaRepository<CouponTemplate, Long> {
+public interface CouponTemplateRepository extends JpaRepository<CouponTemplate, Integer> {
 
     /**
      * 根据模板名查询模板

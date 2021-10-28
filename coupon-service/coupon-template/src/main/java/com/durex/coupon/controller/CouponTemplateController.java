@@ -54,7 +54,7 @@ public class CouponTemplateController {
      * @return {@link CouponTemplate}
      */
     @GetMapping(value = "/{id}")
-    public CouponTemplate getTemplateInfo(@PathVariable(value = "id") Long id) {
+    public CouponTemplate getTemplateInfo(@PathVariable(value = "id") Integer id) {
         log.info("get coupon template: {}", id);
         return templateBaseService.getById(id);
     }
@@ -77,7 +77,7 @@ public class CouponTemplateController {
      * @return {@link CouponTemplateSDK>}
      */
     @GetMapping(value = "/sdk/mapping")
-    public Map<Long, CouponTemplateSDK> getIds2TemplateSDK(Collection<Long> ids) {
+    public Map<Integer, CouponTemplateSDK> getIds2TemplateSDK(Collection<Integer> ids) {
         log.info("get get ids 2 coupon template: {}", JSON.toJSONString(ids));
         return templateBaseService.getIds2TemplateSDK(ids);
     }

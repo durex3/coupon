@@ -21,7 +21,7 @@ public interface ITemplateBaseService {
      * @param id 模版id
      * @return {@link CouponTemplate}
      */
-    CouponTemplate getById(Long id);
+    CouponTemplate getById(Integer id);
 
     /**
      * 查询所有可用的优惠券模版
@@ -33,8 +33,8 @@ public interface ITemplateBaseService {
     /**
      * 获取模版 idList 到 CouponTemplateSDK 的映射
      *
-     * @param ids {@link Collection<Long>} id集合
+     * @param ids {@link Collection<Integer>} id集合
      * @return {@link CouponTemplateSDK}
      */
-    Map<Long, CouponTemplateSDK> getIds2TemplateSDK(Collection<Long> ids);
+    Map<Integer, CouponTemplateSDK> getIds2TemplateSDK(Collection<Integer> ids);
 }

@@ -27,7 +27,7 @@ public class TemplateBaseService implements ITemplateBaseService {
     private CouponTemplateRepository templateRepository;
 
     @Override
-    public CouponTemplate getById(Long id) {
+    public CouponTemplate getById(Integer id) {
         return templateRepository.findById(id)
                 .orElseThrow(() -> new CouponException("coupon template is not exist"));
     }
@@ -62,7 +62,7 @@ public class TemplateBaseService implements ITemplateBaseService {
     }
 
     @Override
-    public Map<Long, CouponTemplateSDK> getIds2TemplateSDK(Collection<Long> ids) {
+    public Map<Integer, CouponTemplateSDK> getIds2TemplateSDK(Collection<Integer> ids) {
         List<CouponTemplate> templateList = templateRepository.findAllById(ids);
         List<CouponTemplateSDK> templateSDKList = templateList.stream().map(TemplateBaseService::couponTemplateToSDK)
                 .collect(Collectors.toList());

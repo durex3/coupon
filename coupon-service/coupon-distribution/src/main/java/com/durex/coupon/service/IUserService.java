@@ -1,7 +1,6 @@
 package com.durex.coupon.service;
 
 import com.durex.coupon.entity.Coupon;
-import com.durex.coupon.exception.CouponException;
 import com.durex.coupon.vo.AcquireTemplateRequest;
 import com.durex.coupon.vo.CouponTemplateSDK;
 import com.durex.coupon.vo.SettlementInfo;
@@ -27,7 +26,7 @@ public interface IUserService {
      * @param status 优惠券状态
      * @return {@link List<Coupon>}
      */
-    List<Coupon> getCouponListByStatus(Long userId, Integer status) throws CouponException;
+    List<Coupon> getCouponListByStatus(Long userId, Integer status);
 
     /**
      * <h2>根据用户 id 查找当前可以领取的优惠券模板</h2>
@@ -35,7 +34,7 @@ public interface IUserService {
      * @param userId 用户 id
      * @return {@link List<CouponTemplateSDK>}
      */
-    List<CouponTemplateSDK> getAvailableTemplate(Long userId) throws CouponException;
+    List<CouponTemplateSDK> getAvailableTemplate(Long userId);
 
     /**
      * <h2>用户领取优惠券</h2>
@@ -43,7 +42,7 @@ public interface IUserService {
      * @param request {@link AcquireTemplateRequest}
      * @return {@link Coupon}
      */
-    Coupon acquireTemplate(AcquireTemplateRequest request) throws CouponException;
+    Coupon acquireTemplate(AcquireTemplateRequest request);
 
 
     /**
@@ -52,5 +51,5 @@ public interface IUserService {
      * @param info {@link SettlementInfo}
      * @return {@link SettlementInfo}
      */
-    SettlementInfo settlement(SettlementInfo info) throws CouponException;
+    SettlementInfo settlement(SettlementInfo info);
 }

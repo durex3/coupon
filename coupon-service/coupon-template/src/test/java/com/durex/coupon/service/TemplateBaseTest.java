@@ -26,7 +26,7 @@ public class TemplateBaseTest {
 
     @Test
     public void testGetById() {
-        CouponTemplate couponTemplate = templateBaseService.getById(13L);
+        CouponTemplate couponTemplate = templateBaseService.getById(13);
         System.out.println(JSON.toJSONString(couponTemplate));
     }
 
@@ -40,7 +40,7 @@ public class TemplateBaseTest {
 
     @Test
     public void testGetIds2TemplateSDK() {
-        Map<Long, CouponTemplateSDK> map = templateBaseService.getIds2TemplateSDK(Lists.newArrayList(13L));
+        Map<Integer, CouponTemplateSDK> map = templateBaseService.getIds2TemplateSDK(Lists.newArrayList(13));
         System.out.println(JSON.toJSONString(map));
     }
 

@@ -5,7 +5,6 @@ import com.durex.coupon.constant.Constant;
 import com.durex.coupon.constant.CouponStatus;
 import com.durex.coupon.dao.CouponDao;
 import com.durex.coupon.entity.Coupon;
-import com.durex.coupon.exception.CouponException;
 import com.durex.coupon.feign.SettlementClient;
 import com.durex.coupon.feign.TemplateClient;
 import com.durex.coupon.service.IRedisService;
@@ -77,7 +76,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<Coupon> getCouponListByStatus(Long userId, Integer status) throws CouponException {
+    public List<Coupon> getCouponListByStatus(Long userId, Integer status) {
 
         List<Coupon> curCached = redisService.getCachedCouponList(userId, status);
         List<Coupon> preTarget;
@@ -156,7 +155,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<CouponTemplateSDK> getAvailableTemplate(Long userId) throws CouponException {
+    public List<CouponTemplateSDK> getAvailableTemplate(Long userId) {
 
         long curTime = new Date().getTime();
         List<CouponTemplateSDK> templateSDKList = templateClient.getAllUsableTemplate().getData();
@@ -208,12 +207,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Coupon acquireTemplate(AcquireTemplateRequest request) throws CouponException {
+    public Coupon acquireTemplate(AcquireTemplateRequest request) {
         return null;
     }
 
     @Override
-    public SettlementInfo settlement(SettlementInfo info) throws CouponException {
+    public SettlementInfo settlement(SettlementInfo info) {
         return null;
     }
 }
