@@ -13,10 +13,15 @@ eureka:
 zuul:
   prefix: /api
   routes:
-    # 优惠券模版路由配置定义
+    # 优惠券模版微服务路由配置定义
     template:
       path: /coupon-template/**
       serviceId: eureka-client-coupon-template
+      strip-prfix: false
+    # 优惠券分发微服务路由配置定义
+    distribution:
+      path: /coupon-distribution/**
+      serviceId: eureka-client-coupon-distribution
       strip-prfix: false
   host:
     connect-timeout-millis: 15000
