@@ -33,7 +33,7 @@ public class TemplateClientHystrix implements TemplateClient {
     }
 
     @Override
-    public CommonResponse<Map<Integer, CouponTemplateSDK>> findIds2TemplateSDK(Collection<Integer> ids) {
+    public CommonResponse<Map<Integer, CouponTemplateSDK>> getIds2TemplateSDK(Collection<Integer> ids) {
 
         log.error("[eureka-client-coupon-template] findIds2TemplateSDK" +
                 "request error");

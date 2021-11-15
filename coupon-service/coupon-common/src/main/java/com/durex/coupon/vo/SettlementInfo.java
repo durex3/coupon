@@ -30,12 +30,12 @@ public class SettlementInfo {
     /**
      * 商品信息
      */
-    private List<GoodsInfo> goodsInfos;
+    private List<GoodsInfo> goodsInfoList;
 
     /**
      * 优惠券列表
      */
-    private List<CouponAndTemplateInfo> couponAndTemplateInfos;
+    private List<CouponAndTemplateInfo> couponAndTemplateInfoList;
 
     /**
      * 是否使结算生效, 即核销

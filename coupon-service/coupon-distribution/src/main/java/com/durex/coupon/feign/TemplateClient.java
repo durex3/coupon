@@ -30,7 +30,7 @@ public interface TemplateClient {
      * <h2>获取模板 ids 到 CouponTemplateSDK 的映射</h2>
      */
     @GetMapping(value = "/coupon-template/template/sdk/mapping")
-    CommonResponse<Map<Integer, CouponTemplateSDK>> findIds2TemplateSDK(
+    CommonResponse<Map<Integer, CouponTemplateSDK>> getIds2TemplateSDK(
             @RequestParam("ids") Collection<Integer> ids
     );
 }
